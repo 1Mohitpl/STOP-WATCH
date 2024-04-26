@@ -10,7 +10,7 @@
 ## Demo
 
 
-https://ideal-time-tracker.netlify.app/
+https://idealtime-tracker.netlify.app
 
 ## 🚀 About Me
 I'm a full stack developer...
