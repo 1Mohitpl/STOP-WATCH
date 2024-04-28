@@ -3,14 +3,17 @@ let min = 0;
 let sec = 0;
 let msec = 0;
 let timer = false;
+let lapCounter = 1;
 
 const startBtn = document.getElementById("startbtn");
 const stopBtn = document.getElementById("stopbtn");
 const resetBtn = document.getElementById("Resetbtn");
+const lapBtn = document.getElementById("lapbtn");
 const hrElement = document.getElementById("HR");
 const minElement = document.getElementById("minitues");
 const secElement = document.getElementById("seconds");
 const msecElement = document.getElementById("milisceonds");
+const lapList = document.getElementById("lapList");
 
 startTimer = () => {
   if (!timer) {
@@ -31,6 +34,7 @@ function resetTimer() {
   sec = 0;
   msec = 0;
   updateTime();
+  clearLaps();
 }
 
 function updateTime() {
@@ -59,6 +63,20 @@ function updateTime() {
 
 }
 
+function addLap() {
+  const lapTime = `${hrElement.textContent}:${minElement.textContent}:${secElement.textContent}:${msecElement.textContent}`;
+  const lapItem = document.createElement("div");
+  lapItem.textContent = `Lap ${lapCounter}: ${lapTime}`;
+  lapList.appendChild(lapItem);
+  lapCounter++;
+}
+
+function clearLaps() {
+  lapCounter = 1;
+  lapList.innerHTML = "";
+}
+
 startBtn.addEventListener("click", startTimer);
 stopBtn.addEventListener("click", stopTimer);
 resetBtn.addEventListener("click", resetTimer);
+lapBtn.addEventListener("click", addLap);
